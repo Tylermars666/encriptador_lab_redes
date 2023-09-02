@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>co.edu.unquindio.encriptador/co.edu.unquindio.encriptador.HelloApplication
+                            <mainClass>co.edu.unquindio.encriptador/co.edu.unquindio.encriptador.EncriptatorApp
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
