@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,9 +22,6 @@ public class PrincipalController implements Initializable {
     private Button btnEncriptar;
 
     @FXML
-    private ComboBox<Integer> comboClaveCesar;
-
-    @FXML
     private ComboBox<String> comboMetodo;
 
     @FXML
@@ -32,8 +30,10 @@ public class PrincipalController implements Initializable {
     @FXML
     private TextArea txtTextoIngresado;
 
+    @FXML
+    private TextField txtClaveCesar;
+
     ObservableList<String> opcionMetodo;
-    ObservableList<Integer>opcionClave;
 
     @FXML
     void desencriptarTexto(ActionEvent event) {
