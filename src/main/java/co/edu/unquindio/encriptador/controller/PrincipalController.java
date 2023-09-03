@@ -9,13 +9,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class PrincipalController implements Initializable {
 
     private String metodoSeleccionado;
+
+    private String textoIngresado;
+
+    private final String ALFABETO = "abcdefghijklmnopqrstuvwxyz";
 
     @FXML
     private Button btnDesencriptar;
@@ -51,6 +57,19 @@ public class PrincipalController implements Initializable {
     }
 
     @FXML
+    void detectarTexto(KeyEvent event) {
+
+        if(!this.txtTextoIngresado.getText().equalsIgnoreCase("")){                           //Se habilitan los botones para encriptar o desencriptar
+            this.btnEncriptar.setVisible(true);                                               //Si se detecta texto en la caja de texto
+            this.btnDesencriptar.setVisible(true);                                            //En caso de no haber texto, se deshabilitan los botones
+        }else{
+            this.btnEncriptar.setVisible(false);
+            this.btnDesencriptar.setVisible(false);
+        }
+
+    }
+
+    @FXML
     void desencriptarTexto(ActionEvent event) {
 
     }
@@ -58,6 +77,7 @@ public class PrincipalController implements Initializable {
     @FXML
     void encriptarTexto(ActionEvent event) {
 
+        //volver a minúscula todo el texto ingresado
     }
 
     @Override
@@ -68,6 +88,37 @@ public class PrincipalController implements Initializable {
         this.txtClaveCesar.setVisible(false);                                                  //de encriptación y se oculta el text field de la clave de cesar
                                                                                                //si no se ha seleccionado esa opción
 
+        this.btnEncriptar.setVisible(false);
+        this.btnDesencriptar.setVisible(false);
+    }
 
+    public String encriptarCesar(String texto, int clave){
+
+        String textoCesar = "";
+        char caracterCesar;
+        int indiceAux;
+
+        for(int i = 0; i<= this.ALFABETO.length()-1; i++){
+
+            for(int j = 0; j<=texto.length()-1; j++){
+
+                indiceAux = 0;
+
+                if(this.ALFABETO.charAt(i)==texto.charAt(j)){
+
+                    if(i + clave>ALFABETO.length()-1){
+
+                        indiceAux = i + clave;
+                        textoCesar+=ALFABETO.charAt(indiceAux);
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        return "";
     }
 }

@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.unquindio.encriptador.controller.PrincipalController">
    <children>
-      <TextArea fx:id="txtTextoIngresado" layoutX="57.0" layoutY="29.0" prefHeight="102.0" prefWidth="478.0" promptText="Ingrese un texto">
+      <TextArea fx:id="txtTextoIngresado" layoutX="57.0" layoutY="29.0" onKeyTyped="#detectarTexto" prefHeight="102.0" prefWidth="478.0" promptText="Ingrese un texto">
          <font>
             <Font size="15.0" />
          </font>
