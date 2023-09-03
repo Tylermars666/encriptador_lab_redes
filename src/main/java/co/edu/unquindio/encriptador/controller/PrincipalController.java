@@ -50,5 +50,6 @@ public class PrincipalController implements Initializable {
 
         opcionMetodo = FXCollections.observableArrayList("Método Cesar","Método Chino");
         this.comboMetodo.setItems(opcionMetodo);
+        this.txtClaveCesar.setVisible(false);
     }
 }
