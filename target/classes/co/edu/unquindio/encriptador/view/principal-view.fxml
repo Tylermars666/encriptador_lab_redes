@@ -14,7 +14,7 @@
             <Font size="15.0" />
          </font>
       </TextArea>
-      <ComboBox fx:id="comboMetodo" layoutX="100.0" layoutY="266.0" prefWidth="150.0" promptText="Seleccione método" />
+      <ComboBox fx:id="comboMetodo" layoutX="100.0" layoutY="266.0" onAction="#seleccionarMetodo" prefWidth="150.0" promptText="Seleccione método" />
       <Button fx:id="btnEncriptar" layoutX="250.0" layoutY="322.0" mnemonicParsing="false" onAction="#encriptarTexto" prefHeight="25.0" prefWidth="92.0" text="Encriptar" />
       <Button fx:id="btnDesencriptar" layoutX="250.0" layoutY="364.0" mnemonicParsing="false" onAction="#desencriptarTexto" prefHeight="25.0" prefWidth="92.0" text="Desencriptar" />
       <TextArea fx:id="txtTextoEncriptado" disable="true" layoutX="57.0" layoutY="145.0" prefHeight="102.0" prefWidth="478.0" promptText="Texto encriptado">

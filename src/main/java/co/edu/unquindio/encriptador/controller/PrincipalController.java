@@ -15,6 +15,8 @@ import java.util.ResourceBundle;
 
 public class PrincipalController implements Initializable {
 
+    private String metodoSeleccionado;
+
     @FXML
     private Button btnDesencriptar;
 
@@ -36,6 +38,19 @@ public class PrincipalController implements Initializable {
     ObservableList<String> opcionMetodo;
 
     @FXML
+    void seleccionarMetodo(ActionEvent event) {
+
+        this.metodoSeleccionado = comboMetodo.getSelectionModel().getSelectedItem();              //Se toma el método seleccionado en el combobox
+
+        if(this.metodoSeleccionado.equalsIgnoreCase("Método Cesar")){                            //Si el método seleccionado es método cesar
+            this.txtClaveCesar.setVisible(true);                                                 //se habilita el text field para que se escriba la clave
+        }else{
+            this.txtClaveCesar.setVisible(false);                                                //Si es el método chino, se oculta nuevamente el text field de clave
+        }
+
+    }
+
+    @FXML
     void desencriptarTexto(ActionEvent event) {
 
     }
@@ -48,8 +63,11 @@ public class PrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        opcionMetodo = FXCollections.observableArrayList("Método Cesar","Método Chino");
-        this.comboMetodo.setItems(opcionMetodo);
-        this.txtClaveCesar.setVisible(false);
+        opcionMetodo = FXCollections.observableArrayList("Método Cesar","Método Chino");       //Se llena el combobox
+        this.comboMetodo.setItems(opcionMetodo);                                               //con las opciones de método
+        this.txtClaveCesar.setVisible(false);                                                  //de encriptación y se oculta el text field de la clave de cesar
+                                                                                               //si no se ha seleccionado esa opción
+
+
     }
 }
