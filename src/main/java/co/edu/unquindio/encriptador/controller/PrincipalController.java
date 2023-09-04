@@ -77,7 +77,22 @@ public class PrincipalController implements Initializable {
     @FXML
     void encriptarTexto(ActionEvent event) {
 
-        //volver a minúscula todo el texto ingresado
+        try{
+            if(this.metodoSeleccionado.equalsIgnoreCase("método cesar")){
+                try{
+                    String encriptadoCesar = encriptarCesar(this.txtTextoIngresado.getText(),Integer.parseInt(this.txtClaveCesar.getText()));
+                    this.txtTextoEncriptado.setText(encriptadoCesar);
+                }catch(NumberFormatException nfe){
+
+                    this.txtTextoEncriptado.setText("SELECCIONE UN VALOR PARA LA CLAVE");
+
+                }
+
+            }
+        }catch (RuntimeException e){
+            this.txtTextoEncriptado.setText("SELECCIONE UN MÉTODO DE ENCRIPTACIÓN");
+        }
+
     }
 
     @Override
@@ -95,30 +110,41 @@ public class PrincipalController implements Initializable {
     public String encriptarCesar(String texto, int clave){
 
         String textoCesar = "";
-        char caracterCesar;
         int indiceAux;
 
-        for(int i = 0; i<= this.ALFABETO.length()-1; i++){
+        for(int i = 0; i<= texto.length()-1; i++){
 
-            for(int j = 0; j<=texto.length()-1; j++){
+            String caracterEncriptado = "";
 
-                indiceAux = 0;
+            for(int j = 0; j<=ALFABETO.length()-1; j++){
 
-                if(this.ALFABETO.charAt(i)==texto.charAt(j)){
+                if(texto.charAt(i)==' '){
+                    caracterEncriptado+=' ';
+                    break;
 
-                    if(i + clave>ALFABETO.length()-1){
+                }else {
+                    if(texto.charAt(i)==ALFABETO.charAt(j)){
 
-                        indiceAux = i + clave;
-                        textoCesar+=ALFABETO.charAt(indiceAux);
+                        if(j + clave>ALFABETO.length()-1){
 
+                            indiceAux = 26 - (j + clave);
+
+                        }else{
+
+                            if(j + clave < 0){
+                                indiceAux = 26 + (j + clave);
+
+                            }else{
+
+                                indiceAux = j + clave;
+                            }
+                        }
+                        caracterEncriptado+=ALFABETO.charAt(indiceAux);
                     }
-
                 }
-
             }
-
+            textoCesar+=caracterEncriptado;
         }
-
-        return "";
+        return textoCesar;
     }
 }
