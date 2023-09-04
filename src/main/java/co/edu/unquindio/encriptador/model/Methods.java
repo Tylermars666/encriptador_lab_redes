@@ -134,5 +134,10 @@ public class Methods {
 
     }
 
+    public String desencriptarChino(String texto){
+
+        return "";
+    }
+
 
 }

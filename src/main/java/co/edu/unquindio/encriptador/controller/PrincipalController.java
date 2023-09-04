@@ -92,6 +92,18 @@ public class PrincipalController implements Initializable {
                     alert.showAndWait();
                 }
             }
+
+            if(this.metodoSeleccionado.equalsIgnoreCase("método chino")){
+
+                try{
+                    String desencriptadoChino = Methods.getInstance().desencriptarChino(this.txtTextoIngresado.getText().toLowerCase());
+                    this.txtTextoEncriptado.setText(desencriptadoChino);
+                }catch (Exception e){
+
+                    e.printStackTrace();
+                }
+            }
+
         }catch (RuntimeException rte){
                                                                                      //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
             Alert alert = new Alert(Alert.AlertType.ERROR,"Debe seleccionar un método para desencriptar",ButtonType.OK);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
