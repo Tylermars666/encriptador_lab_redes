@@ -85,10 +85,8 @@ public class PrincipalController implements Initializable {
 
                 }catch(NumberFormatException nfe){
 
-                    Alert alert = new Alert(Alert.AlertType.ERROR);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+                    Alert alert = new Alert(Alert.AlertType.ERROR,"Debe digitar una clave válida para el método Cesar",ButtonType.OK); //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
                     alert.setHeaderText(null);
-                    alert.setTitle("Error");
-                    alert.setContentText("Debe digitar una clave válida para el método Cesar");
                     alert.showAndWait();
                 }
             }
@@ -96,10 +94,8 @@ public class PrincipalController implements Initializable {
                 //INVOCAR A MÉTODO PARA ENCRIPTAMIENTO CHINO
             }
         }catch (RuntimeException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+            Alert alert = new Alert(Alert.AlertType.ERROR,"Debe seleccionar un método de encriptación",ButtonType.OK);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
             alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText("Debe seleccionar un método de encriptación");
             alert.showAndWait();
         }
     }
