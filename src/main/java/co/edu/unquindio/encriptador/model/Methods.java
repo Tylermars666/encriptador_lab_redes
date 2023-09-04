@@ -57,5 +57,86 @@ public class Methods {
         return textoCesar;                                             //ese String que corresponde a la palabra totalmente encriptada
     }
 
+    public String encriptarChino(String texto){
+
+        int rows = texto.length()/3;
+        if(texto.length()%3!=0){
+            rows = rows + 1;
+        }
+
+        char [][] matriz = llenarMatriz(texto, rows);
+
+        return obtenerTextoChino(matriz, rows);
+
+    }
+
+    public char[][] llenarMatriz(String texto, int rows){
+
+        char [][] matriz = new char[3][rows];
+        int indiceTexto = 0;
+
+        if(3*rows>texto.length()){
+            texto = completarTexto(texto, 3*rows-texto.length() );
+        }
+
+        for(int i = 0; i<3; i++){
+
+            for(int j = 0; j<rows; j++, indiceTexto++){
+
+                matriz[i][j] = texto.charAt(indiceTexto);
+            }
+        }
+
+        return matriz;
+
+    }
+
+    public String completarTexto(String texto, int diferencia){
+
+        String textoAsterisco = texto;
+
+        for(int i = 0; i<diferencia; i++){
+
+            textoAsterisco+="*";
+        }
+        return textoAsterisco;
+    }
+
+    public String obtenerTextoChino(char[][] matriz, int rows){
+
+        String textoChino = "";
+        boolean snake = true;
+
+        for(int j = rows-1; j>=0; j--){
+
+            String textoChinoAux = "";
+
+            if(snake){
+
+                for(int i = 0; i < 3; i++){
+
+                    textoChinoAux += matriz[i][j];
+
+                }
+                snake = false;
+
+
+            }else {
+
+                for(int i = 2; i>= 0; i--){
+
+                    textoChinoAux+=matriz[i][j];
+                }
+                snake = true;
+            }
+
+            textoChino += textoChinoAux;
+
+        }
+
+        return textoChino;
+
+    }
+
 
 }

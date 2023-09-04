@@ -98,8 +98,6 @@ public class PrincipalController implements Initializable {
             alert.setHeaderText(null);
             alert.showAndWait();
         }
-
-
     }
 
     @FXML
@@ -121,6 +119,14 @@ public class PrincipalController implements Initializable {
             }
             if(this.metodoSeleccionado.equalsIgnoreCase("método chino")){
 
+                try{
+                    String encriptadoChino = Methods.getInstance().encriptarChino(this.txtTextoIngresado.getText().toLowerCase());
+                    this.txtTextoEncriptado.setText(encriptadoChino);
+                    this.btnCopiar.setVisible(true);
+                }catch(Exception e){
+
+                    e.printStackTrace();
+                }
             }
         }catch (RuntimeException e){                                                //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
             Alert alert = new Alert(Alert.AlertType.ERROR,"Debe seleccionar un método para encriptar",ButtonType.OK);
@@ -136,7 +142,6 @@ public class PrincipalController implements Initializable {
         this.comboMetodo.setItems(opcionMetodo);                                               //con las opciones de método
         this.txtClaveCesar.setVisible(false);                                                  //de encriptación y se oculta el text field de la clave de cesar
                                                                                                //si no se ha seleccionado esa opción
-
         this.btnEncriptar.setVisible(false);
         this.btnDesencriptar.setVisible(false);
         this.btnCopiar.setVisible(false);

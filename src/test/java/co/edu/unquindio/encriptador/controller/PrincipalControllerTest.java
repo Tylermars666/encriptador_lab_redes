@@ -1,5 +1,6 @@
 package co.edu.unquindio.encriptador.controller;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -54,6 +55,31 @@ class PrincipalControllerTest {
             textoCesar+=caracterEncriptado;
         }
         return textoCesar;
+    }
+
+    void imprimirChino(){
+        String message = encriptarChino("universidad bonita", "abcdefghijklmnopqrstuvwxyz");
+        System.out.println(message);
+    }
+
+    String encriptarChino(String texto, String ALFABETO){
+
+        int rows = texto.length()/3;
+        if(texto.length()%3!=0){
+            rows = rows + 1;
+        }
+
+        return "Mamawebo";
+
+    }
+
+    @Test
+    void rows(){
+        String texto = "universidad bonitas";
+        if(texto.length()%3!=0){
+            System.out.println((texto.length()/3)+1);
+        }
+        System.out.println(texto.length()/3);
     }
   
 }
