@@ -15,7 +15,7 @@ public class Methods {
         return methods;
     }
 
-    public String encriptarCesar(String texto, int clave, String ALFABETO){
+    public String encriptarCesar(String texto, int clave, String ALFABETO){    //Se usa para encriptar y desencriptar
 
         String textoCesar = "";
         int indiceAux;
