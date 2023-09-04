@@ -136,8 +136,65 @@ public class Methods {
 
     public String desencriptarChino(String texto){
 
-        return "";
+        char[][] matrizOriginal = llenarMatrizSerpiente(texto);
+        return desencriptarMatrizOriginal(matrizOriginal);
+
     }
+
+
+
+    public char[][] llenarMatrizSerpiente(String texto){
+
+        boolean snake = true;
+        int rows = texto.length()/3;
+        char [][] matrizOriginal = new char[3][rows];
+        int indiceTexto = 0;
+
+        for(int j = rows-1; j>=0; j--){
+
+            if(snake){
+
+                for(int i = 0; i < 3; i++, indiceTexto++){
+
+                    matrizOriginal[i][j] = texto.charAt(indiceTexto);
+
+                }
+                snake = false;
+
+            }else {
+
+                for(int i = 2; i>= 0; i--, indiceTexto++){
+
+                    matrizOriginal[i][j] = texto.charAt(indiceTexto);
+                }
+                snake = true;
+            }
+        }
+        return matrizOriginal;
+    }
+
+    public String desencriptarMatrizOriginal(char[][]matriz){
+
+        int indiceTexto = 0;
+        String textoOriginal = "";
+        int rows = matriz[0].length;
+
+        for(int i = 0; i<3; i++){
+
+            String textoAux = "";
+
+            for(int j = 0; j<rows; j++, indiceTexto++){
+
+                textoAux+=matriz[i][j];
+            }
+            textoOriginal+=textoAux;
+        }
+
+        return textoOriginal;
+
+    }
+
+
 
 
 }
