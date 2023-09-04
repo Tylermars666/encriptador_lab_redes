@@ -108,7 +108,7 @@ public class PrincipalController implements Initializable {
                 try{                                                             //Se accede al objeto singleton Methods para usar el método encriptarCesar, se envía el texto ingresado, la clave y el alfabeto
                     String encriptadoCesar = Methods.getInstance().encriptarCesar(this.txtTextoIngresado.getText().toLowerCase(), Integer.parseInt(this.txtClaveCesar.getText()),this.ALFABETO);
                     this.txtTextoEncriptado.setText(encriptadoCesar);            //Se introduce el texto encriptado en el textArea de la interfaz gráfica
-                    this.btnCopiar.setVisible(true);
+                    this.btnCopiar.setVisible(true);                             //Se habilita el botón de copiar
 
                 }catch(NumberFormatException nfe){
                                                                                      //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
@@ -119,10 +119,10 @@ public class PrincipalController implements Initializable {
             }
             if(this.metodoSeleccionado.equalsIgnoreCase("método chino")){
 
-                try{
+                try{                                                       //Se accede al objeto singleton Methods para usar el método encriptarChino, se envía el texto ingresado unicamente
                     String encriptadoChino = Methods.getInstance().encriptarChino(this.txtTextoIngresado.getText().toLowerCase());
-                    this.txtTextoEncriptado.setText(encriptadoChino);
-                    this.btnCopiar.setVisible(true);
+                    this.txtTextoEncriptado.setText(encriptadoChino);      //Se introduce el texto encriptado en el textArea de la interfaz gráfica
+                    this.btnCopiar.setVisible(true);                       //se habilita el botón de copiar
                 }catch(Exception e){
 
                     e.printStackTrace();
