@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
@@ -84,13 +81,21 @@ public class PrincipalController implements Initializable {
                     this.txtTextoEncriptado.setText(encriptadoCesar);
                 }catch(NumberFormatException nfe){
 
-                    this.txtTextoEncriptado.setText("SELECCIONE UN VALOR PARA LA CLAVE");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+                    alert.setHeaderText(null);
+                    alert.setTitle("Error");
+                    alert.setContentText("Debe digitar una clave para el método Cesar");
+                    alert.showAndWait();
 
                 }
 
             }
         }catch (RuntimeException e){
-            this.txtTextoEncriptado.setText("SELECCIONE UN MÉTODO DE ENCRIPTACIÓN");
+            Alert alert = new Alert(Alert.AlertType.ERROR);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Debe seleccionar un método de encriptación");
+            alert.showAndWait();
         }
 
     }
