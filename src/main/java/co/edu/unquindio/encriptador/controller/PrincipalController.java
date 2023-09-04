@@ -1,5 +1,6 @@
 package co.edu.unquindio.encriptador.controller;
 
+import co.edu.unquindio.encriptador.model.Methods;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -69,6 +70,8 @@ public class PrincipalController implements Initializable {
     @FXML
     void desencriptarTexto(ActionEvent event) {
 
+
+
     }
 
     @FXML
@@ -76,19 +79,21 @@ public class PrincipalController implements Initializable {
 
         try{
             if(this.metodoSeleccionado.equalsIgnoreCase("método cesar")){
-                try{
-                    String encriptadoCesar = encriptarCesar(this.txtTextoIngresado.getText(),Integer.parseInt(this.txtClaveCesar.getText()));
-                    this.txtTextoEncriptado.setText(encriptadoCesar);
+                try{                                                             //Se accede al objeto singleton Methods para usar el método encriptarCesar, se envía el texto ingresado, la clave y el alfabeto
+                    String encriptadoCesar = Methods.getInstance().encriptarCesar(this.txtTextoIngresado.getText(), Integer.parseInt(this.txtClaveCesar.getText()),this.ALFABETO);
+                    this.txtTextoEncriptado.setText(encriptadoCesar);            //Se introduce el texto encriptado en el textArea de la interfaz gráfica
+
                 }catch(NumberFormatException nfe){
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
                     alert.setHeaderText(null);
                     alert.setTitle("Error");
-                    alert.setContentText("Debe digitar una clave para el método Cesar");
+                    alert.setContentText("Debe digitar una clave válida para el método Cesar");
                     alert.showAndWait();
-
                 }
-
+            }
+            if(this.metodoSeleccionado.equalsIgnoreCase("método chino")){
+                //INVOCAR A MÉTODO PARA ENCRIPTAMIENTO CHINO
             }
         }catch (RuntimeException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
@@ -97,7 +102,6 @@ public class PrincipalController implements Initializable {
             alert.setContentText("Debe seleccionar un método de encriptación");
             alert.showAndWait();
         }
-
     }
 
     @Override
@@ -112,44 +116,5 @@ public class PrincipalController implements Initializable {
         this.btnDesencriptar.setVisible(false);
     }
 
-    public String encriptarCesar(String texto, int clave){
 
-        String textoCesar = "";
-        int indiceAux;
-
-        for(int i = 0; i<= texto.length()-1; i++){
-
-            String caracterEncriptado = "";
-
-            for(int j = 0; j<=ALFABETO.length()-1; j++){
-
-                if(texto.charAt(i)==' '){
-                    caracterEncriptado+=' ';
-                    break;
-
-                }else {
-                    if(texto.charAt(i)==ALFABETO.charAt(j)){
-
-                        if(j + clave>ALFABETO.length()-1){
-
-                            indiceAux = 26 - (j + clave);
-
-                        }else{
-
-                            if(j + clave < 0){
-                                indiceAux = 26 + (j + clave);
-
-                            }else{
-
-                                indiceAux = j + clave;
-                            }
-                        }
-                        caracterEncriptado+=ALFABETO.charAt(indiceAux);
-                    }
-                }
-            }
-            textoCesar+=caracterEncriptado;
-        }
-        return textoCesar;
-    }
 }
