@@ -57,12 +57,47 @@ public class Methods {
         return textoCesar;                                             //ese String que corresponde a la palabra totalmente encriptada
     }
 
-    public String desencriptarCesar(String texto, int clave, String ALFABETO){
+    public String desencriptarCesar(String texto, int clave, String ALFABETO) {
 
-        String textoCesar = "";
+        String textoDesencriptado = "";
         int indiceAux;
+        int claveInversa = -(clave);
 
-        return "";
+        for (int i = 0; i <= texto.length() - 1; i++) {                       //Se toma cada letra del texto ingresado y se compara
+            //cada una con todas las letras del alfabeto
+            String caracterEncriptado = "";
+
+            for (int j = 0; j <= ALFABETO.length() - 1; j++) {
+
+                if (texto.charAt(i) == ' ') {                               //Se valida si hay un espacio en blanco dentro del texto
+                    caracterEncriptado += ' ';                            //ingresado por el usuario
+                    break;
+
+                } else {
+                    if (texto.charAt(i) == ALFABETO.charAt(j)) {
+
+                        if (j + claveInversa > ALFABETO.length() - 1) {
+
+                            indiceAux = Math.abs(26 - (j + claveInversa));
+
+                        } else {
+
+                            if (j + claveInversa < 0) {
+                                indiceAux = 26 + (j + claveInversa);
+
+                            } else {
+
+                                indiceAux = j + claveInversa;
+                            }
+                        }
+                        caracterEncriptado += ALFABETO.charAt(indiceAux);
+                        break;
+                    }
+                }
+            }
+            textoDesencriptado += caracterEncriptado;
+        }
+        return textoDesencriptado;
 
     }
 }

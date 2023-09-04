@@ -81,6 +81,21 @@ public class PrincipalController implements Initializable {
     @FXML
     void desencriptarTexto(ActionEvent event) {
 
+        try{
+            if(this.metodoSeleccionado.equalsIgnoreCase("método cesar")){
+                try{
+                    String desencriptadoCesar = Methods.getInstance().desencriptarCesar(this.txtTextoIngresado.getText(),Integer.parseInt(this.txtClaveCesar.getText()),this.ALFABETO);
+                    this.txtTextoEncriptado.setText(desencriptadoCesar);
+                }catch (NumberFormatException nfe){
+                    Alert alert = new Alert(Alert.AlertType.ERROR,"Debe digitar una clave válida para el método Cesar",ButtonType.OK); //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+                    alert.setHeaderText(null);
+                    alert.showAndWait();
+                }
+            }
+        }catch (RuntimeException rte){
+
+            rte.printStackTrace();
+        }
 
 
     }
@@ -103,7 +118,7 @@ public class PrincipalController implements Initializable {
                 }
             }
             if(this.metodoSeleccionado.equalsIgnoreCase("método chino")){
-                //INVOCAR A MÉTODO PARA ENCRIPTAMIENTO CHINO
+
             }
         }catch (RuntimeException e){
             Alert alert = new Alert(Alert.AlertType.ERROR,"Debe seleccionar un método de encriptación",ButtonType.OK);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
