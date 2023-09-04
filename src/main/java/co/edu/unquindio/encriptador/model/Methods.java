@@ -136,18 +136,18 @@ public class Methods {
 
     public String desencriptarChino(String texto){
 
-        char[][] matrizOriginal = llenarMatrizSerpiente(texto);
+        char[][] matrizOriginal = construirMatrizOriginal(texto);  //Con el texto encriptado se procede a construir la matriz original
         return desencriptarMatrizOriginal(matrizOriginal);
 
     }
 
 
 
-    public char[][] llenarMatrizSerpiente(String texto){
+    public char[][] construirMatrizOriginal(String texto){
 
-        boolean snake = true;
-        int rows = texto.length()/3;
-        char [][] matrizOriginal = new char[3][rows];
+        boolean snake = true;                                    //Al igual que en el método para encriptar, se recorre la matriz
+        int rows = texto.length()/3;                             //en forma de serpiente, pero en este caso en lugar de generar un String
+        char [][] matrizOriginal = new char[3][rows];            //se toma el String encriptado para generar la matriz original
         int indiceTexto = 0;
 
         for(int j = rows-1; j>=0; j--){
@@ -175,10 +175,10 @@ public class Methods {
 
     public String desencriptarMatrizOriginal(char[][]matriz){
 
-        int indiceTexto = 0;
-        String textoOriginal = "";
-        int rows = matriz[0].length;
-
+        int indiceTexto = 0;                                      //Al igual que en el método para encriptar, se recorre
+        String textoOriginal = "";                                //el texto para generar la matriz, pero en este caso
+        int rows = matriz[0].length;                              //se construye el String desencriptado a partir de la matriz
+                                                                  //original obtenida en el método anterior
         for(int i = 0; i<3; i++){
 
             String textoAux = "";
