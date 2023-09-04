@@ -12,6 +12,7 @@ public class EncriptatorApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(EncriptatorApp.class.getResource("view/principal-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Encriptador de texto");
         stage.setScene(scene);
         stage.show();
     }
