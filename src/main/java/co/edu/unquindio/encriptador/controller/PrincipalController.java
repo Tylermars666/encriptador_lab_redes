@@ -22,6 +22,9 @@ public class PrincipalController implements Initializable {
     private final String ALFABETO = "abcdefghijklmnopqrstuvwxyz";
 
     @FXML
+    private Button btnCopiar;
+
+    @FXML
     private Button btnDesencriptar;
 
     @FXML
@@ -40,6 +43,14 @@ public class PrincipalController implements Initializable {
     private TextField txtClaveCesar;
 
     ObservableList<String> opcionMetodo;
+
+    @FXML
+    void copiarTextoEncriptado(ActionEvent event) {
+
+        this.txtTextoIngresado.setText(this.txtTextoEncriptado.getText());
+        this.txtTextoEncriptado.setText("");
+
+    }
 
     @FXML
     void seleccionarMetodo(ActionEvent event) {
@@ -82,6 +93,7 @@ public class PrincipalController implements Initializable {
                 try{                                                             //Se accede al objeto singleton Methods para usar el método encriptarCesar, se envía el texto ingresado, la clave y el alfabeto
                     String encriptadoCesar = Methods.getInstance().encriptarCesar(this.txtTextoIngresado.getText(), Integer.parseInt(this.txtClaveCesar.getText()),this.ALFABETO);
                     this.txtTextoEncriptado.setText(encriptadoCesar);            //Se introduce el texto encriptado en el textArea de la interfaz gráfica
+                    this.btnCopiar.setVisible(true);
 
                 }catch(NumberFormatException nfe){
 
@@ -110,6 +122,7 @@ public class PrincipalController implements Initializable {
 
         this.btnEncriptar.setVisible(false);
         this.btnDesencriptar.setVisible(false);
+        this.btnCopiar.setVisible(false);
     }
 
 

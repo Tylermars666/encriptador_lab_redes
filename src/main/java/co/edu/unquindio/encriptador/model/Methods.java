@@ -35,7 +35,7 @@ public class Methods {
                                                                       //Se tiene en cuenta el índice de la letra del alfabeto
                         if(j + clave>ALFABETO.length()-1){            //Si este indice sumado a la clave es mayor que el tamaño del alfabeto
 
-                            indiceAux = 26 - (j + clave);             //Entonces se procede a calcular el indice correspondiente para esa letra
+                            indiceAux = Math.abs(26 - (j + clave));             //Entonces se procede a calcular el indice correspondiente para esa letra
                                                                       //Es decir que le da la vuelta al alfabeto y vuelve a empezar por las primeras letras
                         }else{
 
@@ -48,6 +48,7 @@ public class Methods {
                             }                                         //el indice nuevo es el indice de la letra del alfabeto sumado a la clave
                         }
                         caracterEncriptado+=ALFABETO.charAt(indiceAux); //En este String se van concatenando todos los caracteres que se han encriptado mediante la clave
+                        break;
                     }
                 }
             }
