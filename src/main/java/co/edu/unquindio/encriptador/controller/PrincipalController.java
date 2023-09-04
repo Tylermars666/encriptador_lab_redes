@@ -83,18 +83,20 @@ public class PrincipalController implements Initializable {
 
         try{
             if(this.metodoSeleccionado.equalsIgnoreCase("método cesar")){
-                try{
-                    String desencriptadoCesar = Methods.getInstance().desencriptarCesar(this.txtTextoIngresado.getText(),Integer.parseInt(this.txtClaveCesar.getText()),this.ALFABETO);
-                    this.txtTextoEncriptado.setText(desencriptadoCesar);
-                }catch (NumberFormatException nfe){
+                try{                                                                 //Se accede al objeto singleton Methods para usar el método encriptarCesar, se envía el texto ingresado, la clave INVERTIDA y el alfabeto
+                    String desencriptadoCesar = Methods.getInstance().encriptarCesar(this.txtTextoIngresado.getText().toLowerCase(),-(Integer.parseInt(this.txtClaveCesar.getText())),this.ALFABETO);
+                    this.txtTextoEncriptado.setText(desencriptadoCesar);              //Se introduce el texto desencriptado en el textArea de la interfaz gráfica
+                }catch (NumberFormatException nfe){                                   //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
                     Alert alert = new Alert(Alert.AlertType.ERROR,"Debe digitar una clave válida para el método Cesar",ButtonType.OK); //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
                     alert.setHeaderText(null);
                     alert.showAndWait();
                 }
             }
         }catch (RuntimeException rte){
-
-            rte.printStackTrace();
+                                                                                     //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+            Alert alert = new Alert(Alert.AlertType.ERROR,"Debe seleccionar un método para desencriptar",ButtonType.OK);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+            alert.setHeaderText(null);
+            alert.showAndWait();
         }
 
 
@@ -106,13 +108,13 @@ public class PrincipalController implements Initializable {
         try{
             if(this.metodoSeleccionado.equalsIgnoreCase("método cesar")){
                 try{                                                             //Se accede al objeto singleton Methods para usar el método encriptarCesar, se envía el texto ingresado, la clave y el alfabeto
-                    String encriptadoCesar = Methods.getInstance().encriptarCesar(this.txtTextoIngresado.getText(), Integer.parseInt(this.txtClaveCesar.getText()),this.ALFABETO);
+                    String encriptadoCesar = Methods.getInstance().encriptarCesar(this.txtTextoIngresado.getText().toLowerCase(), Integer.parseInt(this.txtClaveCesar.getText()),this.ALFABETO);
                     this.txtTextoEncriptado.setText(encriptadoCesar);            //Se introduce el texto encriptado en el textArea de la interfaz gráfica
                     this.btnCopiar.setVisible(true);
 
                 }catch(NumberFormatException nfe){
-
-                    Alert alert = new Alert(Alert.AlertType.ERROR,"Debe digitar una clave válida para el método Cesar",ButtonType.OK); //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+                                                                                     //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+                    Alert alert = new Alert(Alert.AlertType.ERROR,"Debe digitar una clave válida para el método Cesar",ButtonType.OK);
                     alert.setHeaderText(null);
                     alert.showAndWait();
                 }
@@ -120,8 +122,8 @@ public class PrincipalController implements Initializable {
             if(this.metodoSeleccionado.equalsIgnoreCase("método chino")){
 
             }
-        }catch (RuntimeException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR,"Debe seleccionar un método de encriptación",ButtonType.OK);                 //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+        }catch (RuntimeException e){                                                //Alerta de JavaFx para mostrar mensaje en la interfaz gráfica
+            Alert alert = new Alert(Alert.AlertType.ERROR,"Debe seleccionar un método para encriptar",ButtonType.OK);
             alert.setHeaderText(null);
             alert.showAndWait();
         }
