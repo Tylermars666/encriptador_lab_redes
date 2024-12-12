@@ -9,7 +9,7 @@ de la Universidad del Quindío.
 
 * Consiste en una aplicación que recibe un texto y te da la opción
 de elegir con qué método deseas encriptarlo o desencriptarlo.
-* La interfaz gráfica está elaborada con la tecnología JavaFx.
+* La interfaz gráfica está elaborada con la tecnología JavaFx
 
 <img src="https://static.vecteezy.com/system/resources/previews/022/100/210/original/java-logo-transparent-free-png.png" width="500"/>
 
